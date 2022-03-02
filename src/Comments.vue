@@ -1,6 +1,6 @@
 <template>
   <Auth :isAuthenticated="isAuthenticated" :username="user?.name">
-    <input v-model="nuevoContenido" placeholder="Deja tu comentario..." @keypress.enter="addComentario">      
+    <input v-model="nuevoContenido" placeholder="Deixa el teu comentari..." @keypress.enter="addComentario">      
   </Auth>
   <Comment v-for="comentario in comentarios" :key="comentario.id" :contenido="comentario.contenido + ' {id:' + comentario.id + '}'" />
 </template>
