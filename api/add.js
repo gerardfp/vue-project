@@ -15,9 +15,12 @@ export default async function handler(req, res) {
         res.status(401).send();
         return;        
     }
-
+    
+    const email = req.auth.payload['https://my-awesome-namespace.com/user'].email;
+    const picture = req.auth.payload['https://my-awesome-namespace.com/user'].picture;
+    
     const { contenido } = req.query;
 
-    const [rows, fields] = await conn.query(`insert into comentarios(contenido) values ('${contenido}')`);
+    const [rows, fields] = await conn.query(`insert into comentarios(contenido, email, picture) values ('${contenido}','${email}','${picture}')`);
     res.send(rows);
 };
